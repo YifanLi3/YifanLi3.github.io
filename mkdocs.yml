@@ -1,37 +1,57 @@
 
 site_name: Yifan's AI Infra Notes
-site_url: https://YifanLi3.github.io/
+site_url: https://yifanli3.github.io/
 
 theme:
   name: material
   language: zh
+  font:
+    text: Roboto
+    code: Roboto Mono
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    - navigation.footer
+    - toc.follow
     - search.suggest
+    - search.highlight
     - content.code.copy
   palette:
     - scheme: default
+      primary: white
+      accent: blue
       toggle:
-        icon: material/brightness-7
-        name: Dark mode
+        icon: material/weather-night
+        name: 切换深色模式
     - scheme: slate
+      primary: black
+      accent: blue
       toggle:
-        icon: material/brightness-4
-        name: Light mode
+        icon: material/weather-sunny
+        name: 切换浅色模式
 
 nav:
   - 首页: index.md
-  - 基础知识:
-      - Arithmetic Intensity: fundamentals/Arithmetic-intensity.md
-      - Continuous Batching: fundamentals/Continuous-Batching.md
-      - PagedAttention: fundamentals/Paged-attention.md
-      - KV Cache: fundamentals/KV-cache.md
+  - Part I — Foundations:
+      - Arithmetic Intensity: fundamentals/arithmetic-intensity.md
+      - GPU Architecture: fundamentals/gpu-architecture.md
+  - Part II — LLM Inference:
+      - Continuous Batching: vllm/continuous-batching.md
+      - PagedAttention: vllm/paged-attention.md
+      - KV Cache: vllm/kv-cache.md
+  - Part III — Inference Engines:
+      - TensorRT: tensorrt/introduction.md
+  - Part IV — Profiling:
+      - Nsight Systems: profiling/nsight-systems.md
 
 markdown_extensions:
+  - toc:
+      permalink: true
   - admonition
+  - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
   - pymdownx.arithmatex:
