@@ -20,7 +20,7 @@ export default defineConfig({
         items: [
           {
             text: 'Arithmetic Intensity',
-            link: '/fundamentals/arithmetic-intensity'
+            link: '/fundamentals/Arithmetic-intensity'
           }
         ]
       }
