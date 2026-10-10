@@ -25,10 +25,10 @@ theme:
 nav:
   - 首页: index.md
   - 基础知识:
-      - Arithmetic Intensity: fundamentals/arithmetic-intensity.md
+      - Arithmetic Intensity: fundamentals/Arithmetic-intensity.md
       - Continuous Batching: fundamentals/Continuous-Batching.md
-      - PagedAttention: fundamentals/paged-attention.md
-      - KV Cache: fundamentals/kv-cache.md
+      - PagedAttention: fundamentals/Paged-attention.md
+      - KV Cache: fundamentals/KV-cache.md
 
 markdown_extensions:
   - admonition
