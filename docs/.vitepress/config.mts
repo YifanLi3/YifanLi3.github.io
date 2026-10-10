@@ -1,62 +1,66 @@
-import { defineConfig } from 'vitepress'
+import { defineConfig, type DefaultTheme } from 'vitepress'
+
+// 顶部导航：与 Datawhale 使用相同的组织方式
+const nav: DefaultTheme.NavItem[] = [
+  { text: '首页', link: '/' },
+  { text: 'Part I', link: '/fundamentals/arithmetic-intensity' }
+]
+
+// 左侧目录
+const sidebar: DefaultTheme.SidebarItem[] = [
+  {
+    text: 'Part I — Foundations',
+    collapsed: false,
+    items: [
+      {
+        text: '第 1 章 Arithmetic Intensity',
+        link: '/fundamentals/arithmetic-intensity'
+      }
+    ]
+  }
+]
 
 export default defineConfig({
   title: "Yifan's AI Infra Notes",
   description: 'AI Infrastructure Learning Notes',
-  lang: 'zh-CN',
 
+  lang: 'zh-CN',
   base: '/',
   cleanUrls: true,
 
+  markdown: {
+    math: true
+  },
+
   themeConfig: {
-    siteTitle: "Yifan's AI Infra Notes",
+    nav,
+    sidebar,
 
-    // 不显示顶部 Part I、Part II 等导航标签
-    nav: [],
+    search: {
+      provider: 'local'
+    },
 
-    // 左侧完整章节目录
-    sidebar: [
-      {
-        text: 'Part 0 — Introduction',
-        collapsed: false,
-        items: [
-          { text: '首页', link: '/' }
-        ]
-      },
-      {
-        text: 'Part 1 — GPU Computing Fundamentals',
-        collapsed: false,
-        items: [
-          {
-            text: 'Arithmetic Intensity',
-            link: '/fundamentals/arithmetic-intensity'
-          }
-        ]
-      }
-    ],
-
-    // 右侧文章目录
     outline: {
       level: [2, 3],
       label: '本页目录'
     },
 
-    // 搜索
-    search: {
-      provider: 'local'
-    },
-
-    // 上一章 / 下一章
     docFooter: {
-      prev: '上一章',
-      next: '下一章'
+      prev: '上一页',
+      next: '下一页'
     },
 
-    sidebarMenuLabel: '目录',
-    returnToTopLabel: '返回顶部'
-  },
+    returnToTopLabel: '返回顶部',
+    sidebarMenuLabel: '菜单',
+    darkModeSwitchLabel: '外观',
+    lightModeSwitchTitle: '切换到浅色模式',
+    darkModeSwitchTitle: '切换到深色模式',
 
-  markdown: {
-    math: true
+    socialLinks: [
+      {
+        icon: 'github',
+        link: 'https://github.com/YifanLi3/YifanLi3.github.io'
+      }
+    ]
   }
 })
