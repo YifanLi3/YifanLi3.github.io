@@ -1,6 +1,19 @@
 ## 1. Arithmetic Intensity是什么，如何定义的？
 
-!image.png
+Arithmetic intensity (AI) is FLOPs per byte moved from memory.
+A kernel with low AI is memory-bound; high AI is compute-bound.
+
+For a GEMM $Y = XW$ with $X \in \mathbb{R}^{M \times K}$,
+$W \in \mathbb{R}^{K \times N}$ and $b$ bytes per element,
+counting both operand reads and the result write,
+
+$$
+\mathrm{FLOPs} = 2MKN,
+\qquad
+\mathrm{bytes} = b(MK + KN + MN),
+\qquad
+\mathrm{AI} = \frac{2MKN}{b(MK + KN + MN)}.
+$$
 
 **运算强度**定义就是"每搬运一个字节，能做多少次浮点运算"
 
