@@ -58,6 +58,7 @@ LLM Inference 中一个非常重要的优化：Batching
 
 这也是为什么 **Continuous Batching 是 vLLM、SGLang 等推理框架非常重要的优化技术**。
 
+
 ## 2. 推理和训练一次的计算量
 
 推理：2ND （主要统计模型参数参与的矩阵乘法）
@@ -69,6 +70,7 @@ LLM Inference 中一个非常重要的优化：Batching
 - **D**：处理的 token 数量
 
 训练：每个 token 的训练计算量 = 前向2ND + 反向4ND ，则总计算量表示为6ND
+
 
 ## 3. Flops和FLOPS的区别
 
