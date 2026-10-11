@@ -15,15 +15,33 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
-        text: '第 1 章 Arithmetic Intensity',
-        link: '/fundamentals/arithmetic-intensity'
+        text: '第 1 章 Mathematics',
+        link: '/fundamentals/Mathematics'
+      }
+    ]
+  }
+  {
+    text: 'Part 2 — Inference techniques',
+    collapsed: false,
+    items: [
+      {
+        text: '第 1 章 Paged Attention',
+        link: '/fundamentals/Paged-Attention'
+      }
+      {
+        text: '第 2 章 Continuous Batching',
+        link: '/fundamentals/Continuous-Batching'
+      }
+      {
+        text: '第 3 章 Prefix Caching',
+        link: '/fundamentals/Prefix-Caching'
       }
     ]
   }
 ]
 
 const homeContent = [
-  '# AI Infrastructure Notes',
+  '# Yifan's AI Infra Notes',
   '',
   'Welcome to my AI Infrastructure learning notes!',
   '',
