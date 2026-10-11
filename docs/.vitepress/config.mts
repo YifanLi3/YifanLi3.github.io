@@ -4,8 +4,18 @@ import { resolve } from 'node:path'
 
 // 顶部导航：与 Datawhale 使用相同的组织方式
 const nav: DefaultTheme.NavItem[] = [
-  { text: '首页', link: '/' },
-  { text: 'Part I', link: '/fundamentals/arithmetic-intensity' }
+  {
+    text: '首页',
+    link: '/'
+  },
+  {
+    text: 'Part I',
+    link: '/fundamentals/Mathematics'
+  },
+  {
+    text: 'Part II',
+    link: '/fundamentals/Paged-Attention'
+  }
 ]
 
 // 左侧目录
@@ -19,22 +29,22 @@ const sidebar: DefaultTheme.SidebarItem[] = [
         link: '/fundamentals/Mathematics'
       }
     ]
-  }
+  },
   {
-    text: 'Part 2 — Inference techniques',
+    text: 'Part II — Inference Techniques',
     collapsed: false,
     items: [
       {
         text: '第 1 章 Paged Attention',
-        link: '/fundamentals/Paged-Attention'
-      }
+        link: '/inference/Paged-Attention'
+      },
       {
         text: '第 2 章 Continuous Batching',
-        link: '/fundamentals/Continuous-Batching'
-      }
+        link: '/inference/Continuous-Batching'
+      },
       {
         text: '第 3 章 Prefix Caching',
-        link: '/fundamentals/Prefix-Caching'
+        link: '/inference/Prefix-Caching'
       }
     ]
   }
