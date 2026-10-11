@@ -51,7 +51,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
 ]
 
 const homeContent = [
-  '# Yifan's AI Infra Notes',
+  '# Yifan\'s AI Infra Notes',
   '',
   'Welcome to my AI Infrastructure learning notes!',
   '',
