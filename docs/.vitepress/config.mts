@@ -1,4 +1,6 @@
 import { defineConfig, type DefaultTheme } from 'vitepress'
+import { writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
 
 // 顶部导航：与 Datawhale 使用相同的组织方式
 const nav: DefaultTheme.NavItem[] = [
@@ -19,6 +21,37 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     ]
   }
 ]
+
+const homeContent = [
+  '# AI Infrastructure Notes',
+  '',
+  'Welcome to my AI Infrastructure learning notes!',
+  '',
+  'This site documents my exploration of LLM inference, GPU computing, and distributed systems.',
+  '',
+  '## 📚 Learning Topics',
+  ''
+]
+
+for (const section of sidebar) {
+  if (!section.text || !section.items) continue
+
+  homeContent.push(`### ${section.text}`, '')
+
+  for (const item of section.items) {
+    if (item.text && item.link) {
+      homeContent.push(`- [${item.text}](${item.link})`)
+    }
+  }
+
+  homeContent.push('')
+}
+
+writeFileSync(
+  resolve(process.cwd(), 'docs/index.md'),
+  homeContent.join('\n'),
+  'utf-8'
+)
 
 export default defineConfig({
   title: "Yifan's AI Infra Notes",
