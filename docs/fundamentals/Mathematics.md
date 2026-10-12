@@ -1,3 +1,4 @@
+# 第 1 章 Mathematics
 ## 1. Arithmetic Intensity是什么，如何定义的？
 
 Arithmetic intensity (AI) is FLOPs per byte moved from memory.
@@ -19,7 +20,7 @@ $$
 
 下面的例子是一次矩阵乘法（GEMM）的运算强度：
 
-### **1.1为什么 FLOPs = 2MKN**
+### **1.1 为什么 FLOPs = 2MKN**
 
 输出矩阵 Y， 一个点积需要：
 
