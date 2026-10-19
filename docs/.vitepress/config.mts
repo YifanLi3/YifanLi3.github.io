@@ -14,7 +14,7 @@ const nav: DefaultTheme.NavItem[] = [
   },
   {
     text: 'Part II',
-    link: '/fundamentals/Paged-Attention'
+    link: '/inference/Paged-Attention'
   }
 ]
 
@@ -45,6 +45,16 @@ const sidebar: DefaultTheme.SidebarItem[] = [
       {
         text: '第 3 章 Prefix Caching',
         link: '/inference/Prefix-Caching'
+      }
+    ]
+  },
+  {
+    text: 'Part III — SGLang-Omni',
+    collapsed: false,
+    items: [
+      {
+        text: '第 1 章 DiT',
+        link: '/sglang-omni/DiT'
       }
     ]
   }
