@@ -138,7 +138,7 @@ GPU 1：[11,14,17,20]
 
 这就是 Transformer Tensor Parallelism 里非常经典的 Column Parallel → Row Parallel 组合，也是 Megatron-style Tensor Parallelism 减少通信的关键设计之一。
 
-#### 5. TP 的优点、缺点，以及为什么不全部使用 TP
+## 5. TP 的优点、缺点，以及为什么不全部使用 TP
 
 TP 的好处
 
