@@ -15,6 +15,14 @@ const nav: DefaultTheme.NavItem[] = [
   {
     text: 'Part II',
     link: '/inference/Paged-Attention'
+  },
+  {
+    text: 'Part III',
+    link: '/parallelism/Four-parallelism'
+  },
+  {
+    text: 'Part IV',
+    link: '/sglang-omni/DiT'
   }
 ]
 
