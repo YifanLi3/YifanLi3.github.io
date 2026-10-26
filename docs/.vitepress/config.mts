@@ -54,23 +54,23 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     items: [
       {
         text: '第 1 章 四种 Parallelism',
-        link: '/inference/Four-Parallelism'
+        link: '/parallelism/Four-parallelism'
       },
       {
         text: '第 2 章 TP (Tensor Parallelism)',
-        link: '/inference/Tensor-parallelism'
+        link: '/parallelism/Tensor-parallelism'
       },
       {
         text: '第 3 章 PP (Pipeline Parallelism)',
-        link: '/inference/Pipeline-parallelism'
+        link: '/parallelism/Pipeline-parallelism'
       },
       {
         text: '第 4 章 DP (Data Parallelism)',
-        link: '/inference/Data-parallelism'
+        link: '/parallelism/Data-parallelism'
       },
       {
         text: '第 5 章 EP (Expert Parallelism)',
-        link: '/inference/Expert-parallelism'
+        link: '/parallelism/Expert-parallelism'
       }
     ]
   },
