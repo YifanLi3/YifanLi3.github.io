@@ -76,7 +76,7 @@ $$
 
 按列切：
 
-!image.png
+![Column Parallel](/images/image1.png)
 
 结果：两张卡得到不同位置的输出。
 
@@ -88,7 +88,7 @@ $$
 
 按行切：
 
-!image.png
+![Row Parallel](/images/image2.png)
 
 结果：两张卡算的是同一组输出位置的不同贡献。
 
