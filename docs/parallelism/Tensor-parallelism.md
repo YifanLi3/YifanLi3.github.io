@@ -1,6 +1,6 @@
 # 第 2 章 TP (Tensor Parallelism)
 
-## 1.1 TP 到底是什么？为什么需要它？
+## 1. TP 到底是什么？为什么需要它？
 
 TP = Tensor Parallelism，张量并行。
 
@@ -36,7 +36,7 @@ $$
 
 这就进入了我们讨论最多的 横切和竖切。
 
-## 1.2 TP 的横切和竖切：Row Parallel vs Column Parallel
+## 2. TP 的横切和竖切：Row Parallel vs Column Parallel
 
 Column Parallel：按列切
 
@@ -98,7 +98,7 @@ $$
 
 如果两张卡都需要完整结果，可以使用 All-Reduce。
 
-## 1.3 All-Reduce 究竟发生在哪张 GPU 上？
+## 3 All-Reduce 究竟发生在哪张 GPU 上？
 
 GPU 0 算了一半，GPU 1 算了一半。All-Reduce 是在哪张卡上完成的？是不是先合起来，再重新分给两张卡？
 
@@ -130,13 +130,15 @@ GPU 1：[11,14,17,20]
 - 权重切片：已经提前存放在不同 GPU 上，不需要每一层重新切权重。
 - 计算结果：All-Reduce 后，各 GPU 已经拿到下一步需要的完整结果。
 
-## 1.4 为什么 Transformer 里要交替使用 Column Parallel 和 Row Parallel？
+## 4. 为什么 Transformer 里要交替使用 Column Parallel 和 Row Parallel？
 
 用 Transformer 的 MLP 来解释。
 
-一个典型的 MLP 包含两个 Linear 运算，中间有激活函数。以简化的非门控 MLP 为例：第一层 Column Parallel 的输出，刚好就是第二层 Row Parallel 需要的输入分片。
+一个典型的 MLP 包含两个 Linear 运算，中间有激活函数。以简化的非门控 MLP 为例：第一层 Column Parallel 的输出，刚好就是第二层 Row Parallel 需要的输入分片。第一层W1 按输出维度切，GPU 0 产生 H 的前两维，GPU 1 产生后两维。第二层 W2 按输入维度切，所以 GPU 0 恰好需要 H 的前两维，GPU 1 恰好需要后两维。
 
-#### 1.1.5 TP 的优点、缺点，以及为什么不全部使用 TP
+这就是 Transformer Tensor Parallelism 里非常经典的 Column Parallel → Row Parallel 组合，也是 Megatron-style Tensor Parallelism 减少通信的关键设计之一。
+
+#### 5. TP 的优点、缺点，以及为什么不全部使用 TP
 
 TP 的好处
 
@@ -166,3 +168,7 @@ PP 可以把不同层放到不同 GPU 或 GPU 组，主要在 stage 边界传输
 它通常减少了 TP 那种层内频繁的 collective communication，但代价是流水线等待、负载不均衡，以及单请求不能同时使用所有 stage 计算同一层。
 
 因此两者经常组合使用。
+
+真正的 TP 优化，不仅是把大矩阵平均分到几张卡，还包括让每张卡尽可能用本地数据继续计算，减少 All-Reduce 和 All-Gather 的通信次数。
+
+而在 inference 中，还需要进一步考虑 KV Cache 怎么切分、TP 通信对每个 Decode Step 的影响，以及跨 GPU 通信会不会抵消并行计算带来的收益。
