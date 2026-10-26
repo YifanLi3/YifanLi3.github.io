@@ -49,7 +49,33 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     ]
   },
   {
-    text: 'Part III — SGLang-Omni',
+    text: 'Part III — Parallelism Techniques',
+    collapsed: false,
+    items: [
+      {
+        text: '第 1 章 四种 Parallelism',
+        link: '/inference/Four-Parallelism'
+      },
+      {
+        text: '第 2 章 TP (Tensor Parallelism)',
+        link: '/inference/Tensor-parallelism'
+      },
+      {
+        text: '第 3 章 PP (Pipeline Parallelism)',
+        link: '/inference/Pipeline-parallelism'
+      },
+      {
+        text: '第 4 章 DP (Data Parallelism)',
+        link: '/inference/Data-parallelism'
+      },
+      {
+        text: '第 5 章 EP (Expert Parallelism)',
+        link: '/inference/Expert-parallelism'
+      }
+    ]
+  },
+  {
+    text: 'Part IV — SGLang-Omni',
     collapsed: false,
     items: [
       {
