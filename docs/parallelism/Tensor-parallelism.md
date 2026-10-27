@@ -98,7 +98,7 @@ $$
 
 如果两张卡都需要完整结果，可以使用 All-Reduce。
 
-## 3 All-Reduce 究竟发生在哪张 GPU 上？
+## 3. All-Reduce 究竟发生在哪张 GPU 上？
 
 GPU 0 算了一半，GPU 1 算了一半。All-Reduce 是在哪张卡上完成的？是不是先合起来，再重新分给两张卡？
 
