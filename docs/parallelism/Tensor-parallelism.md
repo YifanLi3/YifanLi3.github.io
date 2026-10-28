@@ -4,9 +4,7 @@
 
 TP = Tensor Parallelism，张量并行。
 
-它的核心思想是：
-
-把同一层中的权重矩阵切成几部分，放在不同 GPU 上，让多张 GPU 合作完成这一层的计算。
+它的核心思想是：把同一层中的权重矩阵切成几部分，放在不同 GPU 上，让多张 GPU 合作完成这一层的计算。
 
 > 如果模型有 100 层，每层都要切开，那岂不是需要 200 张 GPU？
 > 
@@ -32,9 +30,7 @@ W=
 \end{bmatrix}
 $$
 
-它可以沿着不同维度切分。
-
-这就进入了我们讨论最多的 横切和竖切。
+它可以沿着不同维度切分。这就进入了我们讨论最多的 横切和竖切。
 
 ## 2. TP 的横切和竖切：Row Parallel vs Column Parallel
 
@@ -116,11 +112,7 @@ GPU 0：[11,14,17,20]
 
 GPU 1：[11,14,17,20]
 
-两张 GPU 最后都拥有完整结果。
-
-不需要先把所有数据集中到 GPU 0，然后再从 GPU 0 分发出去。
-
-实际可以通过 Ring、Tree 等不同算法完成分布式通信，具体由 NCCL 等通信库和硬件环境决定。
+两张 GPU 最后都拥有完整结果。不需要先把所有数据集中到 GPU 0，然后再从 GPU 0 分发出去。实际可以通过 Ring、Tree 等不同算法完成分布式通信，具体由 NCCL 等通信库和硬件环境决定。
 
 > 结果合起来以后，下一层不是又要切开吗？
 > 
@@ -140,19 +132,17 @@ GPU 1：[11,14,17,20]
 
 ## 5. TP 的优点、缺点，以及为什么不全部使用 TP
 
-TP 的好处
+TP 的好处：
 
 - 可以把大矩阵分散到多张 GPU，降低单卡权重显存需求。
 - 多张 GPU 可以同时参与同一层计算。
 - 在计算规模和通信条件合适时，可以降低单个请求的计算延迟。
 
-TP 的代价
+TP 的代价：
 
 需要频繁跨 GPU 通信。
 
-例如一个 Transformer 有 100 层，每层 Attention 和 MLP 中可能涉及多次 collective communication。
-
-如果 GPU 之间通信很慢，就可能出现：
+例如一个 Transformer 有 100 层，每层 Attention 和 MLP 中可能涉及多次 collective communication。如果 GPU 之间通信很慢，就可能出现：
 
 - GPU 计算完成后等待其他 GPU。
 - All-Reduce 占用大量时间。
@@ -163,12 +153,6 @@ TP 的代价
 > 为什么有时选择 PP？
 > 
 
-PP 可以把不同层放到不同 GPU 或 GPU 组，主要在 stage 边界传输 hidden states。
+PP 可以把不同层放到不同 GPU 或 GPU 组，主要在 stage 边界传输 hidden states。它通常减少了 TP 那种层内频繁的 collective communication，但代价是流水线等待、负载不均衡，以及单请求不能同时使用所有 stage 计算同一层。因此两者经常组合使用。
 
-它通常减少了 TP 那种层内频繁的 collective communication，但代价是流水线等待、负载不均衡，以及单请求不能同时使用所有 stage 计算同一层。
-
-因此两者经常组合使用。
-
-真正的 TP 优化，不仅是把大矩阵平均分到几张卡，还包括让每张卡尽可能用本地数据继续计算，减少 All-Reduce 和 All-Gather 的通信次数。
-
-而在 inference 中，还需要进一步考虑 KV Cache 怎么切分、TP 通信对每个 Decode Step 的影响，以及跨 GPU 通信会不会抵消并行计算带来的收益。
+真正的 TP 优化，不仅是把大矩阵平均分到几张卡，还包括让每张卡尽可能用本地数据继续计算，减少 All-Reduce 和 All-Gather 的通信次数。在 inference 中，还需要进一步考虑 KV Cache 怎么切分、TP 通信对每个 Decode Step 的影响，以及跨 GPU 通信会不会抵消并行计算带来的收益。
