@@ -43,16 +43,24 @@ const sidebar: DefaultTheme.SidebarItem[] = [
     collapsed: false,
     items: [
       {
-        text: '第 1 章 Paged Attention',
+        text: '第 1 章 Prefill and Decode',
+        link: '/inference/Prefill-and-Decode'
+      },
+      {
+        text: '第 2 章 Paged Attention',
         link: '/inference/Paged-Attention'
       },
       {
-        text: '第 2 章 Continuous Batching',
+        text: '第 3 章 Continuous Batching',
         link: '/inference/Continuous-Batching'
       },
       {
-        text: '第 3 章 Prefix Caching',
+        text: '第 4 章 Prefix Caching',
         link: '/inference/Prefix-Caching'
+      },
+      {
+        text: '第 5 章 Speculative Decoding',
+        link: '/inference/Speculative-Decoding'
       }
     ]
   },
