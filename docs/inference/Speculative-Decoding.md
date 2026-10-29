@@ -1,4 +1,4 @@
-# 第5章 Speculative Decoding
+# 第 5 章 Speculative Decoding
 
 普通方式是大模型一个个生成这些字,投机方式是小模型先猜一批,大模型每轮验证一批,对的就直接保留,错的当场纠正
 
