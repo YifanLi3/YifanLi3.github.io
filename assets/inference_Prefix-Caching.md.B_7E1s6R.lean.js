@@ -1,0 +1,1 @@
+import{_ as e,o as n,c as r}from"./chunks/framework.CdvW4CUT.js";const d=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"inference/Prefix-Caching.md","filePath":"inference/Prefix-Caching.md"}'),t={name:"inference/Prefix-Caching.md"};function a(c,i,o,s,f,p){return n(),r("div")}const m=e(t,[["render",a]]);export{d as __pageData,m as default};
