@@ -35,7 +35,7 @@ const sidebar: DefaultTheme.SidebarItem[] = [
       {
         text: '第 1 章 Mathematics',
         link: '/fundamentals/Mathematics'
-      }，
+      },
       {
         text: '第 2 章 Benchmark',
         link: '/fundamentals/Benchmark'
