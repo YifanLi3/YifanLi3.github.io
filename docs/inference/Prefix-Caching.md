@@ -1,4 +1,5 @@
 # 第 4 章 Prefix Caching and Radix Attention
+
 ## 1. 为什么需要Prefix Caching？
 
 传统的KV Cache有局限性，它的生命周期和单个请求严格绑定，一旦请求结束，KV Cache就全部释放掉了。没有解决跨请求重复计算的问题，比如在线LLM推理中，大量请求往往共享system prompt，如果每个请求都独立计算一遍完整的prefill，就会造成大量冗余。
