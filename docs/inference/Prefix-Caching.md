@@ -6,7 +6,7 @@
 
 所以prefix caching存在的意义就是改变kv cache的所有权，不在把kv cache绑到某一个request，而是归属到可复用的前缀序列上，即便一个请求结束，对应的kv cache可以继续保留在共享换缓存池中，由淘汰策略决定何时释放
 
-## 2 Radix Attention的核心原理
+## 2. Radix Attention的核心原理
 
 Radix Attention的核心数据结构是Radix Tree，将各请求中的token id序列组织成前缀树，相同prefix仅对应一份KV Cache
 
