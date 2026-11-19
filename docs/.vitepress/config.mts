@@ -39,6 +39,18 @@ const sidebar: DefaultTheme.SidebarItem[] = [
       {
         text: '第 2 章 Benchmark',
         link: '/fundamentals/Benchmark'
+      },
+      {
+        text: '第 3 章 Profilling',
+        link: '/fundamentals/Profilling'
+      },
+      {
+        text: '第 4 章 MoE',
+        link: '/fundamentals/MoE'
+      },
+      {
+        text: '第 5 章 Kernel',
+        link: '/fundamentals/Kernel'
       }
     ]
   },
